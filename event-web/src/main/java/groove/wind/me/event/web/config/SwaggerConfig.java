@@ -24,7 +24,7 @@ public class SwaggerConfig {
     public Docket eventApi() {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("赛事/活动接口api")
+                .groupName("赛事接口api")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("groove.wind.me.event.web.controller.event"))
                 .paths(PathSelectors.any())

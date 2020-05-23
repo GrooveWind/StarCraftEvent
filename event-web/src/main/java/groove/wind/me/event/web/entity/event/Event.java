@@ -24,14 +24,14 @@ public class Event extends BaseMongoEntity {
 
     private String eventChineseName;
 
-    @NotNull(message = "请填写赛事/活动时间")
+    @NotNull(message = "请填写赛事时间")
     private Date eventDate;
 
     @DBRef
-    @NotNull(message = "请填写赛事/活动项目")
+    @NotNull(message = "请填写赛事项目")
     private List<EventCategory> eventCategory;
 
-    @NotBlank(message = "请填写赛事/活动地点")
+    @NotBlank(message = "请填写赛事地点")
     private String eventLocation;
 
     @NotNull(message = "请完善相关宣传图片")

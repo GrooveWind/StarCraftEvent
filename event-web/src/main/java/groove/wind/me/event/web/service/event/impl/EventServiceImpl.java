@@ -1,7 +1,7 @@
 package groove.wind.me.event.web.service.event.impl;
 
-import groove.wind.me.event.web.entity.event.Event;
-import groove.wind.me.event.web.repository.EventRepository;
+import groove.wind.me.event.web.entity.event.*;
+import groove.wind.me.event.web.repository.*;
 import groove.wind.me.event.web.service.event.EventService;
 import groove.wind.me.event.web.utils.StrUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -21,6 +22,20 @@ public class EventServiceImpl implements EventService {
 
     @Autowired
     EventRepository eventRepository;
+
+    @Autowired
+    EventCategoryRepository eventCategoryRepository;
+
+    @Autowired
+    EventImageRepository eventImageRepository;
+
+    @Autowired
+    EventTicketingRepository eventTicketingRepository;
+
+    @Autowired
+    EventCouponRepository eventCouponRepository;
+
+
 
     @Override
     public Page<Event> queryEvents(int pageNum, int pageSize, String eventName) {
@@ -39,12 +54,30 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event saveOrUpdateEvent(Event event) {
+        List<EventCategory> eventCategory = event.getEventCategory();
+        eventCategoryRepository.insert(eventCategory);
+
+        EventImage eventImage = event.getEventImage();
+        eventImageRepository.insert(eventImage);
+
+        List<EventTicketing> eventTicket = event.getEventTicket();
+        eventTicketingRepository.insert(eventTicket);
+
+        EventCoupon eventCoupon = event.getEventCoupon();
+        if (eventCoupon == null) {
+            eventCoupon = new EventCoupon();
+            eventCoupon.setEventCouponId("couponId");
+            eventCouponRepository.insert(eventCoupon);
+        }
+
+
         if (StringUtils.isBlank(event.getEventId())) {
             event.setCreatedDate(new Date());
             event.setUpdatedDate(new Date());
         } else {
             event.setUpdatedDate(new Date());
         }
+        event.setEventStatus(1);
 
         return eventRepository.insert(event);
     }

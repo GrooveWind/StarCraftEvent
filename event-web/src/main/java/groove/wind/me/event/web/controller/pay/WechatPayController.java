@@ -1,6 +1,7 @@
 package groove.wind.me.event.web.controller.pay;
 
 import groove.wind.me.event.web.entity.WechatPayResultMap;
+import groove.wind.me.event.web.entity.event.EventOrder;
 import groove.wind.me.event.web.service.event.EventOrderService;
 import groove.wind.me.event.web.service.pay.WechatPayService;
 import groove.wind.me.event.web.utils.IpUtils;
@@ -36,15 +37,15 @@ public class WechatPayController {
     @PostMapping("/unifiedOrder")
     @ApiOperation(value = "统一下单", notes = "统一下单")
     public WechatPayResultMap unifiedOrder(@ApiParam(value = "订单金额-单位 元") @RequestParam double amount,
-                                           @ApiParam(value = "商品名称") @RequestParam String body,
+                                           @ApiParam(value = "商品名称") @RequestParam String item,
                                            HttpServletRequest request) {
         try {
+            String ip = IpUtils.getIpAddr(request);
             // 创建订单
-            String orderNum = eventOrderService.buildOrderNum();
-            eventOrderService.buildOrder(orderNum);
+            EventOrder order = eventOrderService.buildOrder(amount, item, ip);
 
             // 向微信服务器发送请求
-            WechatPayResultMap resultMap = wechatPayService.unifiedOrder(orderNum, amount, body, IpUtils.getIpAddr(request));
+            WechatPayResultMap resultMap = wechatPayService.unifiedOrder(order.getOrderNum(), amount, item, IpUtils.getIpAddr(request));
 
             return resultMap;
         } catch (Exception e) {
