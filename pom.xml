@@ -91,7 +91,7 @@
 
 
     <build>
-        <finalName>starCraftEvent</finalName>
+        <finalName>star-craft-event</finalName>
 
         <plugins>
             <plugin>

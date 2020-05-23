@@ -43,6 +43,7 @@ public class EventOrderServiceImpl implements EventOrderService {
         order.setOrderNum(orderNum);
         order.setOrderState(1);
         order.setCreatedDate(new Date());
+        order.setUpdatedDate(new Date());
         eventOrderRepository.insert(order);
         return order;
     }

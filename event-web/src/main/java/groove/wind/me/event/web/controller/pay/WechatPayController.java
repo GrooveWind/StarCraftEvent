@@ -33,8 +33,8 @@ public class WechatPayController {
     /**
      * 统一下单接口
      */
-    @ApiOperation(value = "统一下单", notes = "统一下单")
     @PostMapping("/unifiedOrder")
+    @ApiOperation(value = "统一下单", notes = "统一下单")
     public WechatPayResultMap unifiedOrder(@ApiParam(value = "订单金额-单位 元") @RequestParam double amount,
                                            @ApiParam(value = "商品名称") @RequestParam String body,
                                            HttpServletRequest request) {
@@ -56,7 +56,8 @@ public class WechatPayController {
     /**
      * 微信支付异步通知
      */
-    @RequestMapping(value = "/notify")
+    @PostMapping(value = "/notify")
+    @ApiOperation(value = "支付异步通知", notes = "支付异步通知")
     public String payNotify(HttpServletRequest request) {
         String xmlBack = "<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[报文为空]]></return_msg></xml> ";
         try {
@@ -67,8 +68,8 @@ public class WechatPayController {
         return xmlBack;
     }
 
-    @ApiOperation(value = "退款", notes = "退款")
     @PostMapping("/refund")
+    @ApiOperation(value = "退款", notes = "退款")
     public WechatPayResultMap refund(@ApiParam(value = "订单号") @RequestParam String orderNo,
                             @ApiParam(value = "退款金额") @RequestParam double amount,
                             @ApiParam(value = "退款原因") @RequestParam(required = false) String refundReason) throws Exception {

@@ -1,6 +1,7 @@
 package groove.wind.me.event.web.entity.event;
 
 
+import groove.wind.me.event.web.entity.BaseMongoEntity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Document(collection = "event")
 @Data
-public class Event {
+public class Event extends BaseMongoEntity {
 
     @Id
     private String eventId;

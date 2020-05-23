@@ -19,17 +19,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
 
-    @Bean(value = "bizApi")
-    public Docket bizApi() {
+
+    @Bean(value = "eventApi")
+    public Docket eventApi() {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("业务接口api")
+                .groupName("赛事/活动接口api")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("groove.wind.me.web.controller.biz"))
+                .apis(RequestHandlerSelectors.basePackage("groove.wind.me.event.web.controller.event"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
     }
+
 
     @Bean(value = "payApi")
     public Docket payApi() {
@@ -37,16 +39,30 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .groupName("支付接口api")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("groove.wind.me.web.controller.pay"))
+                .apis(RequestHandlerSelectors.basePackage("groove.wind.me.event.web.controller.pay"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
     }
 
+
+    @Bean(value = "bizApi")
+    public Docket bizApi() {
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("业务接口api")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("groove.wind.me.event.web.controller.biz"))
+                .paths(PathSelectors.any())
+                .build();
+        return docket;
+    }
+
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Let's FUNK")
-                .description("Welcome to the new world")
+                .description("I feel good")
                 .version("1.0")
                 .build();
     }
