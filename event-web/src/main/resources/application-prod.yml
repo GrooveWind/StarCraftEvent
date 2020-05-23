@@ -1,0 +1,32 @@
+server:
+  port: 8090
+  compression:
+    enabled: true
+    mime-types: application/json,application/mapper,text/html,text/mapper,text/plain
+
+logging:
+  config: classpath:log4j2-prod.xml
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      enabled: true
+      max-request-size: 15MB
+
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+
+  data:
+    mongodb:
+      uri: mongodb://grooveAdmin:soul49#Man@172.26.0.2:27017/groove
+
+cors:
+  allowedOrigins: "*"
+  allowedMethods: GET,POST,DELETE,OPTIONS
+  allowCredentials: true
+  allowedHeaders: "*"
+
