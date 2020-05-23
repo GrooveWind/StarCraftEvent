@@ -30,3 +30,16 @@ cors:
   allowCredentials: true
   allowedHeaders: "*"
 
+
+pay:
+  wxpay:
+    app:
+      appID: "xxxxx"
+      mchID: "xxxx"
+      key: "xxxxxxxxxxxxx"
+      #从微信商户平台下载的安全证书存放的路径、放在resources下面,切记一定要看看target目录下的class文件下有没有打包apiclient_cert.p12文件
+      certPath: static/cert/wxpay/apiclient_cert.p12
+      #微信支付成功的异步通知接口
+      #payNotifyUrl: ${server.service-domain}/wxPay/notify
+      payNotifyUrl: http://xxx.com/wxPay/notify
+
