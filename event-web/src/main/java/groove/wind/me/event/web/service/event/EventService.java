@@ -12,4 +12,6 @@ public interface EventService {
 
     Event saveOrUpdateEvent(Event event);
 
+    boolean deleteEvent(String eventId);
+
 }

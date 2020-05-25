@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,19 @@ public class EventController {
     @Autowired
     EventService eventService;
 
+
+    @PostMapping("/list/pageNum/{pageNum}/pageSize/{pageSize}")
+    @ApiOperation(value = "查看赛事列表", notes = "查看赛事列表")
+    public Page<Event> list(@PathVariable("pageNum") Integer pageNum, @PathVariable("pageSize") Integer pageSize) {
+        return eventService.queryEvents(pageNum, pageSize, "");
+    }
+
+
+    @GetMapping("/detail/{eventId}")
+    @ApiOperation(value = "查看赛事详情", notes = "查看赛事详情")
+    public Event detail(@PathVariable("eventId") String eventId) {
+        return eventService.queryById(eventId);
+    }
 
     @PostMapping("/create")
     @ApiOperation(value = "创建赛事", notes = "创建赛事", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -38,10 +52,10 @@ public class EventController {
         return eventService.saveOrUpdateEvent(event);
     }
 
-    @GetMapping("/detail/{eventId}")
-    @ApiOperation(value = "查看赛事详情", notes = "查看赛事详情")
-    public Event detail(@PathVariable("eventId") String eventId) {
-        return eventService.queryById(eventId);
+    @PostMapping("/delete/{eventId}")
+    @ApiOperation(value = "删除赛事", notes = "删除赛事")
+    public boolean deleteEvent(@PathVariable("eventId") String eventId) {
+        return eventService.deleteEvent(eventId);
     }
 
 

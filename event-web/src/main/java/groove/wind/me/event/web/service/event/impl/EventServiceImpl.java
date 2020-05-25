@@ -36,14 +36,17 @@ public class EventServiceImpl implements EventService {
     EventCouponRepository eventCouponRepository;
 
 
-
     @Override
     public Page<Event> queryEvents(int pageNum, int pageSize, String eventName) {
-        PageRequest pageable = PageRequest.of(pageNum - 1, pageSize);
-        if (StrUtils.hasContainChinese(eventName)) {
-            return eventRepository.findByEventChineseNameLike(eventName, pageable);
+        PageRequest pageable = PageRequest.of(pageNum - 1 < 0 ? 0 : pageNum - 1, pageSize);
+        if (StringUtils.isNotBlank(eventName)) {
+            if (StrUtils.hasContainChinese(eventName)) {
+                return eventRepository.findByEventChineseNameLike(eventName, pageable);
+            } else {
+                return eventRepository.findByEventEnglishNameLike(eventName, pageable);
+            }
         }
-        return eventRepository.findByEventEnglishNameLike(eventName, pageable);
+        return eventRepository.findAll(pageable);
     }
 
     @Override
@@ -80,6 +83,12 @@ public class EventServiceImpl implements EventService {
         event.setEventStatus(1);
 
         return eventRepository.insert(event);
+    }
+
+    @Override
+    public boolean deleteEvent(String eventId) {
+        eventRepository.deleteById(eventId);
+        return true;
     }
 
 }
