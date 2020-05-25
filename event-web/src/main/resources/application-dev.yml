@@ -3,6 +3,10 @@ server:
   compression:
     enabled: true
     mime-types: application/json,application/mapper,text/html,text/mapper,text/plain
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 800
+    max-connections: 12000
 
 logging:
   config: classpath:log4j2-dev.xml
