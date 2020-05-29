@@ -34,6 +34,20 @@ spring:
       package: groove.wind.me.event.web.entity
       print: true
 
+  redis:
+    host: 172.27.0.2
+    port: 6389
+    password: Grooveis30
+    database: 0
+    timeout: 2000ms
+    lettuce:
+      pool:
+        max-wait: 1000ms
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+
+
 cors:
   allowedOrigins: "*"
   allowedMethods: GET,POST,DELETE,OPTIONS
