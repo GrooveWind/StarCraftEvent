@@ -5,7 +5,6 @@ import groove.wind.me.event.web.repository.EventOrderRepository;
 import groove.wind.me.event.web.service.event.EventOrderService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,9 +15,6 @@ public class EventOrderServiceImpl implements EventOrderService {
 
     @Autowired
     EventOrderRepository eventOrderRepository;
-
-    @Autowired
-    MongoTemplate mongoTemplate;
 
     @Override
     public EventOrder buildOrder(double amount, String item, String ip) {

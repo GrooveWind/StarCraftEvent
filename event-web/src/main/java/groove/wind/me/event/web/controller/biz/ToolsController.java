@@ -2,6 +2,8 @@ package groove.wind.me.event.web.controller.biz;
 
 import com.google.common.collect.Lists;
 import groove.wind.me.event.web.entity.FileStore;
+import groove.wind.me.event.web.enums.StatusEnum;
+import groove.wind.me.event.web.exception.EventBizException;
 import groove.wind.me.event.web.service.tools.FileStoreService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,7 +39,7 @@ public class ToolsController {
         String realName = file.getOriginalFilename();
         String suffix = realName.substring(realName.lastIndexOf(".") + 1);
         if (!IMAGE_SUFFIX.contains(suffix.toUpperCase())) {
-            return "不支持此类型文件上传";
+            throw new EventBizException(StatusEnum.NOT_SUPPORT_FILE_TYPE);
         }
 
         String storeName =  UUID.randomUUID().toString().replaceAll("-", "") + "." + suffix;
@@ -50,7 +52,7 @@ public class ToolsController {
             file.transferTo(targetFile);
         } catch (Exception e) {
             log.error(e);
-            return "文件上传失败";
+            throw new EventBizException(StatusEnum.FILE_UPLOAD_ERR);
         }
 
         FileStore fileStore = new FileStore();
