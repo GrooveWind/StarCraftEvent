@@ -1,6 +1,6 @@
 package groove.wind.me.event.web.service.tools.impl;
 
-import groove.wind.me.event.web.entity.FileStore;
+import groove.wind.me.event.web.entity.biz.FileStore;
 import groove.wind.me.event.web.repository.FileStoreRepository;
 import groove.wind.me.event.web.service.tools.FileStoreService;
 import org.apache.commons.lang3.StringUtils;

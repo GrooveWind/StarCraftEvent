@@ -1,6 +1,6 @@
 package groove.wind.me.event.web.service.event.impl;
 
-import groove.wind.me.event.web.entity.event.EventOrder;
+import groove.wind.me.event.web.entity.biz.event.EventOrder;
 import groove.wind.me.event.web.repository.EventOrderRepository;
 import groove.wind.me.event.web.service.event.EventOrderService;
 import lombok.extern.log4j.Log4j2;

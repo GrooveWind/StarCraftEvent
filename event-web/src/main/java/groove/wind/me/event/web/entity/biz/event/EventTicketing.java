@@ -1,4 +1,4 @@
-package groove.wind.me.event.web.entity.event;
+package groove.wind.me.event.web.entity.biz.event;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

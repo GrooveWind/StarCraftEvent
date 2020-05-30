@@ -1,7 +1,7 @@
 package groove.wind.me.event.web.controller.pay;
 
 import groove.wind.me.event.web.entity.WechatPayResultMap;
-import groove.wind.me.event.web.entity.event.EventOrder;
+import groove.wind.me.event.web.entity.biz.event.EventOrder;
 import groove.wind.me.event.web.service.event.EventOrderService;
 import groove.wind.me.event.web.service.pay.WechatPayService;
 import groove.wind.me.event.web.utils.IpUtils;

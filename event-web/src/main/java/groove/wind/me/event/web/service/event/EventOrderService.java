@@ -1,6 +1,6 @@
 package groove.wind.me.event.web.service.event;
 
-import groove.wind.me.event.web.entity.event.EventOrder;
+import groove.wind.me.event.web.entity.biz.event.EventOrder;
 
 public interface EventOrderService {
 

@@ -1,7 +1,7 @@
 package groove.wind.me.event.web.controller.biz;
 
 import com.google.common.collect.Lists;
-import groove.wind.me.event.web.entity.FileStore;
+import groove.wind.me.event.web.entity.biz.FileStore;
 import groove.wind.me.event.web.enums.StatusEnum;
 import groove.wind.me.event.web.exception.EventBizException;
 import groove.wind.me.event.web.service.tools.FileStoreService;

@@ -1,7 +1,7 @@
 package groove.wind.me.event.web.service.event;
 
 
-import groove.wind.me.event.web.entity.event.Event;
+import groove.wind.me.event.web.entity.biz.event.Event;
 import org.springframework.data.domain.Page;
 
 public interface EventService {

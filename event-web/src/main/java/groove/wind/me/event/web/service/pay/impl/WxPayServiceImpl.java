@@ -5,7 +5,6 @@ import groove.wind.me.event.web.entity.WechatPayResultMap;
 import groove.wind.me.event.web.sdk.WXPay;
 import groove.wind.me.event.web.sdk.WXPayUtil;
 import groove.wind.me.event.web.service.pay.WechatPayService;
-import groove.wind.me.event.web.utils.IpUtils;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

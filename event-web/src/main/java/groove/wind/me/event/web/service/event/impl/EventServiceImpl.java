@@ -1,6 +1,6 @@
 package groove.wind.me.event.web.service.event.impl;
 
-import groove.wind.me.event.web.entity.event.*;
+import groove.wind.me.event.web.entity.biz.event.*;
 import groove.wind.me.event.web.repository.*;
 import groove.wind.me.event.web.service.event.EventService;
 import groove.wind.me.event.web.utils.StrUtils;

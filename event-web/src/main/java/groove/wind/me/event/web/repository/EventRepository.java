@@ -1,6 +1,6 @@
 package groove.wind.me.event.web.repository;
 
-import groove.wind.me.event.web.entity.event.Event;
+import groove.wind.me.event.web.entity.biz.event.Event;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;

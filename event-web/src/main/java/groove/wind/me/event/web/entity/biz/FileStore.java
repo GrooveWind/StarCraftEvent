@@ -1,5 +1,6 @@
-package groove.wind.me.event.web.entity;
+package groove.wind.me.event.web.entity.biz;
 
+import groove.wind.me.event.web.entity.BaseMongoEntity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

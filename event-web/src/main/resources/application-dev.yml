@@ -31,8 +31,6 @@ spring:
   data:
     mongodb:
       uri: mongodb://grooveAdmin:soul49#Man@localhost:27017/groove
-      package: groove.wind.me.event.web.entity
-      print: true
 
   redis:
     host: 172.27.0.2
