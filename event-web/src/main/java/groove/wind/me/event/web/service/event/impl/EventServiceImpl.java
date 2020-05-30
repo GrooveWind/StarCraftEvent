@@ -77,10 +77,10 @@ public class EventServiceImpl implements EventService {
         if (StringUtils.isBlank(event.getEventId())) {
             event.setCreatedDate(new Date());
             event.setUpdatedDate(new Date());
+            event.setEventStatus(1);
         } else {
             event.setUpdatedDate(new Date());
         }
-        event.setEventStatus(1);
 
         return eventRepository.insert(event);
     }

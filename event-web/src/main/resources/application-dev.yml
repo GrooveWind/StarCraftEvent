@@ -33,7 +33,7 @@ spring:
       uri: mongodb://grooveAdmin:soul49#Man@localhost:27017/groove
 
   redis:
-    host: 172.27.0.2
+    host: localhost
     port: 6389
     password: Grooveis30
     database: 0

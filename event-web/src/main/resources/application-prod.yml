@@ -11,8 +11,8 @@ server:
 logging:
   config: classpath:log4j2-prod.xml
   level:
-      org.springframework.data.mongodb.repository.MongoRepository: DEBUG
-      org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+      org.springframework.data.mongodb.repository.MongoRepository: WARN
+      org.springframework.data.mongodb.core.MongoTemplate: WARN
 
 spring:
   servlet:

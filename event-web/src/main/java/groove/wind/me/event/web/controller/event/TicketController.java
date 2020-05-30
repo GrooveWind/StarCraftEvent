@@ -23,10 +23,16 @@ public class TicketController {
     @GetMapping("/coupon")
     @ApiOperation(value = "抢票测试", notes = "抢票测试-限10张")
     public String coupon(String eventId, String personId) {
+        String key = "t:c" + eventId + ":" + personId;
+        if (redisTemplate.hasKey(key)) {
+            return "请勿重复抢票";
+        }
+
         if (redisTemplate.opsForValue().increment("t:c:" + eventId + ":" + personId) > 10) {
             return "您来晚了一步～";
         }
-        return "优惠就是实惠（请及时付款）";
+
+        return "抢票成功，请及时付款";
     }
 
 
