@@ -30,8 +30,9 @@ public class PersonServiceImpl implements PersonService {
 
 
     @Override
-    public Page queryWithPage(Integer pageNum, Integer pageSize) {
-        return personRepository.findAll(PageRequest.of(pageNum, pageSize));
+    public Page<Person> queryWithPage(Integer pageNum, Integer pageSize) {
+        PageRequest pageable = PageRequest.of(pageNum - 1 < 0 ? 0 : pageNum - 1, pageSize);
+        return personRepository.findAll(pageable);
     }
 
     @Override

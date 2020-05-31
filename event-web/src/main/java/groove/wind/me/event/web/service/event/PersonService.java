@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 
 public interface PersonService {
 
-    Page queryWithPage(Integer pageNum, Integer pageSize);
+    Page<Person> queryWithPage(Integer pageNum, Integer pageSize);
 
     Person queryById(String id);
 
