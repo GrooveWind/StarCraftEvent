@@ -1,5 +1,6 @@
 package groove.wind.me.event.web.entity.biz.event;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,6 +21,7 @@ public class EventTicketing {
 
     private Integer eventTicketRemain;
 
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date eventTicketDueTime;
 
 }

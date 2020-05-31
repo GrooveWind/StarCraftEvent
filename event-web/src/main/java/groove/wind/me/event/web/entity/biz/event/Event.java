@@ -1,6 +1,7 @@
 package groove.wind.me.event.web.entity.biz.event;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
 import groove.wind.me.event.web.entity.BaseMongoEntity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -25,6 +26,7 @@ public class Event extends BaseMongoEntity {
     private String eventChineseName;
 
     @NotNull(message = "请填写赛事时间")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date eventDate;
 
     @DBRef

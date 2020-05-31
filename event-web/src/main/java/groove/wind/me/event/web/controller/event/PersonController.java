@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @Api(value = "人员管理api", tags = "人员管理api")
 @RequestMapping("/biz/person")
@@ -23,7 +25,7 @@ public class PersonController {
 
     @PostMapping("/list/pageNum/{pageNum}/pageSize/{pageSize}")
     @ApiOperation(value = "查看个人列表", notes = "查看个人列表")
-    public Page list(@PathVariable("pageNum") Integer pageNum, @PathVariable("pageSize") Integer pageSize) {
+    public Page<Person> list(@PathVariable("pageNum") Integer pageNum, @PathVariable("pageSize") Integer pageSize) {
         return personService.queryWithPage(pageNum, pageSize);
     }
 
@@ -37,13 +39,13 @@ public class PersonController {
 
     @PostMapping("/create")
     @ApiOperation(value = "创建个人信息", notes = "创建个人信息", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person create(@RequestBody Person entity) {
+    public Person create(@Valid @RequestBody Person entity) {
         return personService.saveOrUpdateEvent(entity);
     }
 
     @PostMapping("/modify")
     @ApiOperation(value = "更新个人信息", notes = "更新个人信息", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person modify(@RequestBody Person entity) {
+    public Person modify(@Valid @RequestBody Person entity) {
         return personService.saveOrUpdateEvent(entity);
     }
 

@@ -34,9 +34,9 @@ public class JsonResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         if (body instanceof CommonResult) {
             result = body;
         } else if (body instanceof String) {
-            result = JSONObject.toJSONString(CommonResult.success(body));
+            result = CommonResult.success(body);
         } else {
-            result = JSONObject.toJSONString(CommonResult.success(body));
+            result = CommonResult.success(body);
         }
 
         return result;

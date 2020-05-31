@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @Api(value = "赛事管理api", tags = "赛事管理api")
 @RequestMapping("/biz/event")
@@ -39,13 +41,13 @@ public class EventController {
 
     @PostMapping("/createEvent")
     @ApiOperation(value = "创建赛事", notes = "创建赛事", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Event createEvent(@RequestBody Event event) {
+    public Event createEvent(@Valid @RequestBody Event event) {
         return eventService.saveOrUpdateEvent(event);
     }
 
     @PostMapping("/modifyEvent")
     @ApiOperation(value = "更新赛事", notes = "更新赛事", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Event modifyEvent(@RequestBody Event event) {
+    public Event modifyEvent(@Valid @RequestBody Event event) {
         if (StringUtils.isBlank(event.getEventId())) {
             throw new EventBizException(StatusEnum.MODIFY_LOSE_ID);
         }
